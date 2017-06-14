@@ -76,6 +76,16 @@ public class Main extends Application {
                 b.setBackground(whiteBG);
                 buttonGrid[i][j] = b;
                 innerPane.add(b,i,j);
+                final int thisI = i;
+                final int thisJ = j;
+                b.setOnAction((actionEvent) -> {
+                    if (grid.checkCell(thisI,thisJ)){
+                        grid.killCell(thisI,thisJ);
+                    } else {
+                        grid.birthCell(thisI,thisJ);
+                    }
+                    draw();
+                });
             }
         }
 
