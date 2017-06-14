@@ -7,7 +7,7 @@ import java.util.Set;
  * Represents a grid of Cells, the field of play.
  *
  * @author Dominic Brady (domos@domos.me.uk)
- * @version 1.0 (14th June 2017)
+ * @version 1.1 (14th June 2017)
  */
 public class CellGrid {
 
@@ -60,7 +60,14 @@ public class CellGrid {
      */
     public CellGrid(int gridSizeI, int gridSizeJ){
         grid = new Cell[gridSizeI][gridSizeJ];
-        grid = new Cell[gridSizeI][gridSizeJ];
+        displayGrid = new Cell[gridSizeI][gridSizeJ];
+
+        for (int i=0; i<gridSizeI; i++){
+            for (int j=0; j<gridSizeJ; j++){
+                grid[i][j] = new Cell();
+                displayGrid[i][j] = new Cell();
+            }
+        }
     }
 
     //Methods
@@ -104,7 +111,7 @@ public class CellGrid {
      */
     public boolean checkCell(int i, int j){
         checkCellBounds(i, j);
-        return grid[i][j].isAlive();
+        return displayGrid[i][j].isAlive();
     }
 
     /**
@@ -115,7 +122,7 @@ public class CellGrid {
      */
     public void birthCell(int i, int j){
         checkCellBounds(i, j);
-        grid[i][j].setAlive(true);
+        displayGrid[i][j].setAlive(true);
     }
 
     /**
@@ -126,7 +133,7 @@ public class CellGrid {
      */
     public void killCell(int i, int j){
         checkCellBounds(i, j);
-        grid[i][j].setAlive(false);
+        displayGrid[i][j].setAlive(false);
     }
 
     /**
@@ -172,11 +179,7 @@ public class CellGrid {
                 }
 
                 //Check for invalid positions, and don't count cell as its own neighbour
-                if (posI >= getRows() || posJ >= getCols() || posI < 0 || posJ < 0 || posI == i || posJ == j){
-                    break;
-                }
-
-                if (checkCell(posI, posJ)){
+                if (!(posI >= getRows() || posJ >= getCols() || posI < 0 || posJ < 0 || (posI == i && posJ == j)) && checkCell(posI, posJ)){
                     count++;
                 }
             }
@@ -232,15 +235,18 @@ public class CellGrid {
      * Process one generation of births and deaths
      */
     public void doGeneration(){
-        for (int i=0; i<displayGrid.length; i++){
-            for (int j=0; j<displayGrid[0].length; j++){
+        for (int i=0; i<getRows(); i++){
+            for (int j=0; j<getCols(); j++){
+                int neighbours = countNeighbours(i,j);
+                //Copy current value
+                grid[i][j].setAlive(displayGrid[i][j].isAlive());
                 //Handle starvations
-                if (!stableValues.contains(countNeighbours(i,j))){
+                if (!stableValues.contains(neighbours)){
                     grid[i][j].setAlive(false);
-                    break;
+                    continue;
                 }
                 //Handle births
-                if (birthValues.contains(countNeighbours(i,j))){
+                if (birthValues.contains(neighbours)){
                     grid[i][j].setAlive(true);
                 }
             }
