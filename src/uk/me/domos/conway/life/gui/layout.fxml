@@ -4,10 +4,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="uk.me.domos.conway.life.gui.Controller">
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
-    <GridPane fx:id="innerPane" xmlns:fx="http://javafx.com/fxml" alignment="center"
-              GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1">
-    </GridPane>
-    <Button fx:id="nextGeneration" text="Next" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-</GridPane>
+    <top>
+        <HBox spacing="10">
+            <Label text="Grid Size: "/>
+            <TextField fx:id="rowsField" maxWidth="50"/>
+            <Label text="x"/>
+            <TextField fx:id="colsField" maxWidth="50"/>
+            <Button fx:id="resizeGridButton" onAction="#setGridSize" text="OK"/>
+        </HBox>
+    </top>
+    <center>
+        <GridPane fx:id="innerPane" xmlns:fx="http://javafx.com/fxml" alignment="center"
+                  GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1">
+            <padding><Insets top="10" bottom="10" /></padding>
+        </GridPane>
+    </center>
+    <bottom>
+        <!--TODO: More Controls-->
+        <Button fx:id="nextGeneration" onAction="#step" text="Next" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    </bottom>
+</BorderPane>

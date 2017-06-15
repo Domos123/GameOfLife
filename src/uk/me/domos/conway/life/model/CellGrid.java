@@ -209,6 +209,10 @@ public class CellGrid {
         }
     }
 
+    public Set<Integer> getBirthValues(){
+        return birthValues;
+    }
+
     /**
      * Add a value to the set of values which will cause a living cell to be stable
      *
@@ -229,6 +233,10 @@ public class CellGrid {
         if (stableValues.contains(value)){
             stableValues.remove(value);
         }
+    }
+
+    public Set<Integer> getStableValues(){
+        return stableValues;
     }
 
     /**
