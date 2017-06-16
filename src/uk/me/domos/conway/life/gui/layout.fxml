@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import java.util.ArrayList?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="uk.me.domos.conway.life.gui.Controller">
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
     <top>
@@ -57,4 +58,35 @@
             <CheckBox fx:id="showPredictions" selected="true" onAction="#draw" text="Show Predictions"/>
         </HBox>
     </bottom>
+
+
+    <fx:define>
+        <ArrayList fx:id="birthCheckBoxes">
+            <fx:reference source="birthZero" />
+            <fx:reference source="birthOne" />
+            <fx:reference source="birthTwo" />
+            <fx:reference source="birthThree" />
+            <fx:reference source="birthFour" />
+            <fx:reference source="birthFive" />
+            <fx:reference source="birthSix" />
+            <fx:reference source="birthSeven" />
+            <fx:reference source="birthEight" />
+        </ArrayList>
+    </fx:define>
+
+    <fx:define>
+        <ArrayList fx:id="stableCheckBoxes">
+            <fx:reference source="stableZero" />
+            <fx:reference source="stableOne" />
+            <fx:reference source="stableTwo" />
+            <fx:reference source="stableThree" />
+            <fx:reference source="stableFour" />
+            <fx:reference source="stableFive" />
+            <fx:reference source="stableSix" />
+            <fx:reference source="stableSeven" />
+            <fx:reference source="stableEight" />
+        </ArrayList>
+    </fx:define>
+
 </BorderPane>
+

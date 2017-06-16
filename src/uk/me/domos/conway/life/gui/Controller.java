@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.me.domos.conway.life.model.CellGrid;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -71,41 +72,9 @@ public class Controller {
 
     //Checkboxes to handle rule variation
     @FXML
-    private CheckBox birthZero;
+    private ArrayList<CheckBox> birthCheckBoxes;
     @FXML
-    private CheckBox birthOne;
-    @FXML
-    private CheckBox birthTwo;
-    @FXML
-    private CheckBox birthThree;
-    @FXML
-    private CheckBox birthFour;
-    @FXML
-    private CheckBox birthFive;
-    @FXML
-    private CheckBox birthSix;
-    @FXML
-    private CheckBox birthSeven;
-    @FXML
-    private CheckBox birthEight;
-    @FXML
-    private CheckBox stableZero;
-    @FXML
-    private CheckBox stableOne;
-    @FXML
-    private CheckBox stableTwo;
-    @FXML
-    private CheckBox stableThree;
-    @FXML
-    private CheckBox stableFour;
-    @FXML
-    private CheckBox stableFive;
-    @FXML
-    private CheckBox stableSix;
-    @FXML
-    private CheckBox stableSeven;
-    @FXML
-    private CheckBox stableEight;
+    private ArrayList<CheckBox> stableCheckBoxes;
 
     //Methods
 
@@ -339,32 +308,10 @@ public class Controller {
     @FXML
     private void updateBirthValues(){
         grid.clearBirthValues();
-        if (birthZero.isSelected()){
-            grid.addBirthValue(0);
-        }
-        if (birthOne.isSelected()){
-            grid.addBirthValue(1);
-        }
-        if (birthTwo.isSelected()){
-            grid.addBirthValue(2);
-        }
-        if (birthThree.isSelected()){
-            grid.addBirthValue(3);
-        }
-        if (birthFour.isSelected()){
-            grid.addBirthValue(4);
-        }
-        if (birthFive.isSelected()){
-            grid.addBirthValue(5);
-        }
-        if (birthSix.isSelected()){
-            grid.addBirthValue(6);
-        }
-        if (birthSeven.isSelected()){
-            grid.addBirthValue(7);
-        }
-        if (birthEight.isSelected()){
-            grid.addBirthValue(8);
+        for (int i=0; i<birthCheckBoxes.size(); i++){
+            if (birthCheckBoxes.get(i).isSelected()){
+                grid.addBirthValue(i);
+            }
         }
         draw();
     }
@@ -372,32 +319,10 @@ public class Controller {
     @FXML
     private void updateStableValues(){
         grid.clearStableValues();
-        if (stableZero.isSelected()){
-            grid.addStableValue(0);
-        }
-        if (stableOne.isSelected()){
-            grid.addStableValue(1);
-        }
-        if (stableTwo.isSelected()){
-            grid.addStableValue(2);
-        }
-        if (stableThree.isSelected()){
-            grid.addStableValue(3);
-        }
-        if (stableFour.isSelected()){
-            grid.addStableValue(4);
-        }
-        if (stableFive.isSelected()){
-            grid.addStableValue(5);
-        }
-        if (stableSix.isSelected()){
-            grid.addStableValue(6);
-        }
-        if (stableSeven.isSelected()){
-            grid.addStableValue(7);
-        }
-        if (stableEight.isSelected()){
-            grid.addStableValue(8);
+        for (int i=0; i<stableCheckBoxes.size(); i++){
+            if (stableCheckBoxes.get(i).isSelected()){
+                grid.addStableValue(i);
+            }
         }
         draw();
     }
