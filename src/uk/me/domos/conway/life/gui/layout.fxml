@@ -23,6 +23,9 @@
     </center>
     <bottom>
         <!--TODO: More Controls-->
-        <Button fx:id="nextGeneration" onAction="#step" text="Next" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <HBox spacing="10">
+            <Button fx:id="nextGeneration" onAction="#step" text="Next" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <CheckBox fx:id="showPredictions" selected="true" onAction="#draw" text="Show Predictions"/>
+        </HBox>
     </bottom>
 </BorderPane>

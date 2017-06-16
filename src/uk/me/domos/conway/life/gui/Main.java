@@ -20,7 +20,7 @@ import java.io.IOException;
  * Main GUI Application, handling all UI functionality
  *
  * @author Dominic Brady (domos@domos.me.uk)
- * @version 0.1 (14th June 2017)
+ * @version 1.0 (16th June 2017)
  */
 public class Main extends Application {
 
@@ -28,6 +28,9 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Starts the application and hands off control to our Controller
+     */
     @Override
     public void start(Stage primaryStage) {
         Controller controller = null;
