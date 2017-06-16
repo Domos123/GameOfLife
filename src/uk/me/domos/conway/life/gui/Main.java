@@ -1,19 +1,11 @@
 package uk.me.domos.conway.life.gui;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import uk.me.domos.conway.life.model.CellGrid;
 
-import javax.swing.border.StrokeBorder;
 import java.io.IOException;
 
 /**

@@ -9,22 +9,51 @@
     <top>
         <HBox spacing="10">
             <Label text="Grid Size: "/>
-            <TextField fx:id="rowsField" maxWidth="50"/>
+            <TextField fx:id="rowsField" maxWidth="50" text="50"/>
             <Label text="x"/>
-            <TextField fx:id="colsField" maxWidth="50"/>
-            <Button fx:id="resizeGridButton" onAction="#setGridSize" text="OK"/>
+            <TextField fx:id="colsField" maxWidth="50" text="50"/>
+            <Button onAction="#setGridSize" text="OK"/>
+            <CheckBox fx:id="wrapEdges" selected="true" onAction="#setShouldWrap" text="Wrap Edges"/>
+            <CheckBox fx:id="smallButtons" onAction="#toggleButtonSize" text="Smaller Tiles"/>
         </HBox>
     </top>
     <center>
         <GridPane fx:id="innerPane" xmlns:fx="http://javafx.com/fxml" alignment="center"
                   GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1">
-            <padding><Insets top="10" bottom="10" /></padding>
+            <padding><Insets top="10" bottom="10" right="10"/></padding>
         </GridPane>
     </center>
+    <right>
+        <VBox spacing="10">
+            <Label text="Birth:"/>
+            <CheckBox fx:id="birthZero" onAction="#updateBirthValues" text="0"/>
+            <CheckBox fx:id="birthOne" onAction="#updateBirthValues" text="1"/>
+            <CheckBox fx:id="birthTwo" onAction="#updateBirthValues" text="2"/>
+            <CheckBox fx:id="birthThree" selected="true" onAction="#updateBirthValues" text="3"/>
+            <CheckBox fx:id="birthFour" onAction="#updateBirthValues" text="4"/>
+            <CheckBox fx:id="birthFive" onAction="#updateBirthValues" text="5"/>
+            <CheckBox fx:id="birthSix" onAction="#updateBirthValues" text="6"/>
+            <CheckBox fx:id="birthSeven" onAction="#updateBirthValues" text="7"/>
+            <CheckBox fx:id="birthEight" onAction="#updateBirthValues" text="8"/>
+            <Separator/>
+            <Label text="Stable:"/>
+            <CheckBox fx:id="stableZero" onAction="#updateStableValues" text="0"/>
+            <CheckBox fx:id="stableOne" onAction="#updateStableValues" text="1"/>
+            <CheckBox fx:id="stableTwo" selected="true" onAction="#updateStableValues" text="2"/>
+            <CheckBox fx:id="stableThree" selected="true" onAction="#updateStableValues" text="3"/>
+            <CheckBox fx:id="stableFour" onAction="#updateStableValues" text="4"/>
+            <CheckBox fx:id="stableFive" onAction="#updateStableValues" text="5"/>
+            <CheckBox fx:id="stableSix" onAction="#updateStableValues" text="6"/>
+            <CheckBox fx:id="stableSeven" onAction="#updateStableValues" text="7"/>
+            <CheckBox fx:id="stableEight" onAction="#updateStableValues" text="8"/>
+        </VBox>
+    </right>
     <bottom>
-        <!--TODO: More Controls-->
         <HBox spacing="10">
-            <Button fx:id="nextGeneration" onAction="#step" text="Next" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label text="Framerate:"/>
+            <TextField fx:id="framerateField" maxWidth="50" text="5" />
+            <Button onAction="#step" text="Step"/>
+            <Button fx:id="runLife" onAction="#toggleRun" text="Run"/>
             <CheckBox fx:id="showPredictions" selected="true" onAction="#draw" text="Show Predictions"/>
         </HBox>
     </bottom>

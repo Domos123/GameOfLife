@@ -41,7 +41,7 @@ public class CellGrid {
     /**
      * This is the size of grid we will create if a size is not specified
      */
-    private static final int DEFAULT_SIZE = 10;
+    public static final int DEFAULT_SIZE = 50;
 
     //Constructors
 
@@ -213,6 +213,10 @@ public class CellGrid {
         return birthValues;
     }
 
+    public void clearBirthValues(){
+        birthValues.clear();
+    }
+
     /**
      * Add a value to the set of values which will cause a living cell to be stable
      *
@@ -239,6 +243,10 @@ public class CellGrid {
         return stableValues;
     }
 
+    public void clearStableValues(){
+        stableValues.clear();
+    }
+
     /**
      * Process one generation of births and deaths
      */
@@ -251,7 +259,6 @@ public class CellGrid {
                 //Handle starvations
                 if (!stableValues.contains(neighbours)){
                     grid[i][j].setAlive(false);
-                    continue;
                 }
                 //Handle births
                 if (birthValues.contains(neighbours)){
